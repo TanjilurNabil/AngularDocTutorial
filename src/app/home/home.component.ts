@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { HousingLocationComponent } from '../housing-location/housing-location.component';
-
+import { Housinglocation } from '../housinglocation';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -14,9 +14,55 @@ import { HousingLocationComponent } from '../housing-location/housing-location.c
       </form>
     </section>
     <section class="results">
-      <app-housing-location></app-housing-location>
+      <app-housing-location
+        *ngFor="let housingLocation of housingLocationList"
+        [housingLocationList]="housingLocation"
+      ></app-housing-location>
     </section>
   `,
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {}
+export class HomeComponent {
+  // housingLocation: Housinglocation = {
+  //   id: 9999,
+  //   name: 'Test Home',
+  //   city: 'Test city',
+  //   state: 'ST',
+  //   photo: 'assets/example-house.jpg',
+  //   availableUnits: 99,
+  //   wifi: true,
+  //   laundry: false,
+  // };
+  housingLocationList: Housinglocation[] = [
+    {
+      id: 9999,
+      name: 'Test Home',
+      city: 'Test city',
+      state: 'ST',
+      photo: 'assets/example-house.jpg',
+      availableUnits: 99,
+      wifi: true,
+      laundry: false,
+    },
+    {
+      id: 9999,
+      name: 'Test Home',
+      city: 'Test city',
+      state: 'ST',
+      photo: 'assets/example-house1.jpg',
+      availableUnits: 99,
+      wifi: true,
+      laundry: false,
+    },
+    {
+      id: 9999,
+      name: 'Test Home',
+      city: 'Test city',
+      state: 'ST',
+      photo: 'assets/example-house3.jpg',
+      availableUnits: 99,
+      wifi: true,
+      laundry: false,
+    },
+  ];
+}
