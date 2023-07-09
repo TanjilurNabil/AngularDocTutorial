@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { HousingLocationComponent } from '../housing-location/housing-location.component';
+import { HousingService } from '../housing.service';
 import { Housinglocation } from '../housinglocation';
+HousingService;
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -33,36 +35,42 @@ export class HomeComponent {
   //   wifi: true,
   //   laundry: false,
   // };
-  housingLocationList: Housinglocation[] = [
-    {
-      id: 9999,
-      name: 'Test Home',
-      city: 'Test city',
-      state: 'ST',
-      photo: 'assets/example-house.jpg',
-      availableUnits: 99,
-      wifi: true,
-      laundry: false,
-    },
-    {
-      id: 9999,
-      name: 'Test Home',
-      city: 'Test city',
-      state: 'ST',
-      photo: 'assets/example-house1.jpg',
-      availableUnits: 99,
-      wifi: true,
-      laundry: false,
-    },
-    {
-      id: 9999,
-      name: 'Test Home',
-      city: 'Test city',
-      state: 'ST',
-      photo: 'assets/example-house3.jpg',
-      availableUnits: 99,
-      wifi: true,
-      laundry: false,
-    },
-  ];
+  // housingLocationList: Housinglocation[] = [
+  //   {
+  //     id: 9999,
+  //     name: 'Test Home',
+  //     city: 'Test city',
+  //     state: 'ST',
+  //     photo: 'assets/example-house.jpg',
+  //     availableUnits: 99,
+  //     wifi: true,
+  //     laundry: false,
+  //   },
+  //   {
+  //     id: 9999,
+  //     name: 'Test Home',
+  //     city: 'Test city',
+  //     state: 'ST',
+  //     photo: 'assets/example-house1.jpg',
+  //     availableUnits: 99,
+  //     wifi: true,
+  //     laundry: false,
+  //   },
+  //   {
+  //     id: 9999,
+  //     name: 'Test Home',
+  //     city: 'Test city',
+  //     state: 'ST',
+  //     photo: 'assets/example-house3.jpg',
+  //     availableUnits: 99,
+  //     wifi: true,
+  //     laundry: false,
+  //   },
+  // ];
+  housingLocationList: Housinglocation[] = [];
+  housingService: HousingService = inject(HousingService);
+
+  constructor() {
+    this.housingLocationList = this.housingService.getAllHousingLocations();
+  }
 }
